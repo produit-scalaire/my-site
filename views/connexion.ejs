@@ -1,0 +1,32 @@
+<%- include('includes/head', {Title: 'connexion'})%>
+<%- include('includes/head', {Title: 'connexion'})%>
+<link rel="stylesheet" type="text/css" href="css/connexion.css">
+</head>
+<body>
+  <%- include('includes/header') %>
+  <main>
+    <img src="img/space-galaxy-background.jpg" alt="fond" id="background-video">
+    <div id="first_div">
+      <h1>
+        Connexion
+      </h1>
+      <section id="input_connexion">
+        <form  action="/connexion" method="POST">
+          <div class="form__group field">
+            <input type="text" class="form__field" placeholder="nom_dutilisateur" name="nom_dutilisateur" id='nom_dutilisateur' required />
+            <label for="nom_dutilisateur" class="form__label">Nom d'utilisateur</label>
+          </div>
+          <div class="form__group field">
+            <input type="password" class="form__field" placeholder="password" name="password" id='password' required />
+            <label for="password" class="form__label">Mot de passe</label>
+          </div>
+          <button>
+            Se connecter
+          </button>
+        </form>
+      </section>
+      <a href="/creer-compte" class="custom-cursor">Créer un compte</a>
+    </div>
+  </main>
+</body>
+</html>

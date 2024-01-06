@@ -1,0 +1,107 @@
+<header id="redhead">
+    <a href="/" class="custom-cursor"><img id="logo_noir_blanc" src="img/IMG_6768.JPG" alt="logo BDS" >
+    </a>
+      <ul>
+        <% if (!locals.isAuth) { %>
+            <li class="ecranLi">
+                <a href="/connexion" class="custom-cursor">
+                    <button class="button-85" role="button">
+                        Se connecter
+                    </button>
+                </a>
+            </li>
+         <% } %>
+        <% if (locals.isAuth) { %>
+          <li class="ecranLi">
+            <form action="/logout" method="POST">
+                <button class="button-85" role="button" name="logout">
+                    Se déconnecter
+                </button>
+            </form>
+          </li>
+        <% } %>
+        <li>
+          <button class="btn custom-cursor" type="button" >
+              <strong>Explore</strong>
+              <div id="container-stars">
+                <div id="stars"></div>
+              </div>
+              <div id="glow">
+                <div class="circle"></div>
+                <div class="circle"></div>
+              </div>
+          </button>
+        </li>
+      </ul>
+  </header>
+  <nav id="nav_id">
+      <ul>
+          <% if (!locals.isAuth) { %>
+            <li class="telephoneLi">
+                <a href="/connexion" class="custom-cursor">
+                    <button class="button-85" role="button">
+                        Se connecter
+                    </button>
+                </a>
+            </li>
+         <% } %>
+        <% if (locals.isAuth) { %>
+          <li class="telephoneLi">
+            <form action="/logout" method="POST">
+                <button class="button-85" role="button" name="logout">
+                    Se déconnecter
+                </button>
+            </form>
+          </li>
+        <% } %>
+        <li>
+            <a href="/team" class="custom-cursor">
+                <button class="button-85" role="button">
+                    Team
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="/contact" class="custom-cursor">
+                <button class="button-85" role="button">
+                    Contact
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="/evenement" class="custom-cursor">
+                <button class="button-85" role="button">
+                    Les évenements
+                </button>
+            </a>
+
+        </li>
+        <li>
+            <a href="/A-propos" class="custom-cursor">
+                <button class="button-85" role="button">
+                    À propos
+                </button>
+            </a>
+        </li>
+          <% if (locals.isAuth) {%>
+          <li>
+              <form action="/profile" method="get">
+                  <a href="/profile" class="custom-cursor">
+                    <button class="button-85" role="button">
+                        Profil
+                    </button>
+                    </a>
+              </form>
+          </li>
+          <% } %>
+          <% if (locals.isAdmin) { %>
+          <li>
+              <a href="/admin" class="custom-cursor">
+                <button class="button-85" role="button">
+                    Admin
+                </button>
+              </a>
+          </li>
+        <% } %>
+      </ul>
+  </nav>

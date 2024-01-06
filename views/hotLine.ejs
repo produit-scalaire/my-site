@@ -1,0 +1,155 @@
+<%- include('includes/head.ejs', {Title: 'Campagne BDE'}) %>
+<link rel="stylesheet" type="text/css" href="css/hotLine.css">
+<script src="js/soumettrePost.js" defer></script>
+<head>
+<body>
+    <%- include('includes/header') %>
+    <main>
+        <img src="img/93611.jpg" alt="fond" id="background-video">
+        <div id="hiddenDiv">
+            <h1>
+     t           soumettre sa résolution
+            </h1>
+            <form method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="image">Mettre l'image : </label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+                <div>
+                    <label for="description">Ajouter une description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <button>soumettre la résolution</button>
+            </form>
+        </div>
+        <div id="first_div">
+            <div>
+                <h1>
+                    Demandes
+                </h1>
+                <p>
+                    Ici vous pouvez demandez à un explorateur agueri de vous livrer des crêpes.
+                </p>
+            </div>
+            <div id="secondDiv">
+                <h2>
+                    Podium
+                </h2>
+                <% let thereIsUsers = usersData.length > 0 %>
+
+                <% for (let i = 0; i < usersData.length; i++) { %>
+                    <% const user = usersData[i]; %>
+                    <% if (user.point) { %>
+                        <% if (i === 0) {%>
+                            <% thereIsUsers = true %>
+                            <h3>
+                                1er <%= user.nom_dutilisateur %>
+                            </h3>
+                            <p>
+                                A : <%= user.point %> points
+                            </p>
+                        <% } else {%>
+                            <h3>
+                                <%= i + 1 %>ème : <%= user.nom_dutilisateur %>
+                            </h3>
+                            <p>
+                                A : <%= user.point %> points
+                            </p>
+                        <% } %>
+                    <% } %>
+                <% } %>
+                <% if (!thereIsUsers) { %>
+                    <p>
+                        Il n'y a pas encore de participant
+                    </p>
+                <% } %>
+                <% console.log("here") %>
+            </div>
+            <div id="secondDiv">
+                <h2>
+                    Commander
+                </h2>
+                <form action="/commandeCrepe" method="POST">
+                    <ul>
+                        <li>
+                            <label for="garniture">Sur votre crepe</label>
+                            <input type="radio" name="garniture" value="nutella"> nutella
+                            <input type="radio" name="garniture" value="confiture"> confiture
+                            <input type="radio" name="garniture" value="sucre"> sucre
+                        </li>
+                        <li>
+                            <label for="commentaire">Commentaire</label>
+                            <input type="text" name="commentaire" id="commentaire">
+                        </li>
+                    </ul>
+                    <button>
+                        submit
+                    </button>
+                </form>
+                <h2>
+                    Commandes
+                </h2>
+                <% let toutesLesCommandesSontTerminees = true; %>
+                <% commandeData.forEach(commande => { %>
+                    <% if (!commande.isFinish) { %>
+                        <% toutesLesCommandesSontTerminees = false; %>
+                        <h3>
+                            <%= commande.nom %> <%= commande.prenom %>
+                        </h3>
+                        <p>
+                            <%= commande.commentaire %>
+                            <%= commande.garniture %>
+                        </p>
+                    <% } %>
+                <% }) %>
+                <% if (toutesLesCommandesSontTerminees) { %>
+                    <h3>
+                        Pas encore de commande
+                    </h3>
+                <% } %>
+
+            </div>
+            <div id="thirdDiv">
+                <h2>
+                    Chasse au trésor
+                </h2>
+                <p>
+                    Retrouve ici toutes les énigmes. Celles en vert sont déjà resolues alors dépéchez vous de résoudre les autres !
+                </p>
+                <% postData.forEach(post => { %>
+                    <% if (post.isFinish) {%>
+                        <div id="postFinish">
+                            <h2><%= post.titre %></h2>
+                            <p>
+                                <%= post.commentairePost %>
+                            </p>
+                            <p>
+                                Récompense : <%= post.recompense %>
+                            </p>
+                            <p>
+                                statut : Accepté
+                            </p>
+                        </div>
+                    <% } else {%>
+                        <div id="postNotFinish">
+                            <h2><%= post.titre %></h2>
+                            <p>
+                                Déscription : <%= post.commentaire %>
+                            </p>
+                            <p>
+                                Récompense : <%= post.recompense %>
+                            </p>
+                            <p>
+                                statut : en attente
+                            </p>
+                            <button id="but<%= post.id %>" data-post-id="<%= post.id %>">
+                                Soummettre sa resolution
+                            </button>
+                        </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+</body>
+

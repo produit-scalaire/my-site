@@ -1,0 +1,139 @@
+body {
+
+    width: 100%;
+    flex-direction: column;
+    background-size: 100%; /* Ajuste la taille de l'image pour remplir complètement l'arrière-plan */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-attachment: fixed; /* Fixe l'image en position de fond */
+    position: absolute;
+}
+
+#first_div {
+    margin: 10rem 3rem 12rem 3rem;
+    padding: 2rem 2rem 15rem 2rem;
+    background-color: white;
+    opacity: 80%;
+    border: 0.2rem solid rgba(230,173,26,255);
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#first_div h1 {
+    text-align: center;
+
+}
+
+#first_div a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: black;
+    margin: 2rem 0 0 4rem;
+}
+
+#input_connexion {
+    margin: 5rem 4rem 0 4rem;
+    padding: 1rem;
+    border: 0.2rem solid rgba(230,173,26,255);
+    border-radius: 10px;
+    display: grid;
+}
+
+#input_connexion input {
+    width: 20rem;
+    margin-bottom: 1rem;
+
+}
+
+#logo_noir_rouge {
+    width: 100%;
+    object-fit: cover;
+    margin-top: 4rem;
+}
+
+#input-error {
+    text-align: center;
+    margin: 0 5rem 0 5rem;
+    color: #ffffff;
+    background-color: #d58879;
+    border: 0.2rem solid #c23333;
+}
+
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: black;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight:700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+}
+
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
+
+#confirm-Password {
+    font-size: 0.97rem;
+}
+
+@media (max-width: 765px) {
+    #first_div {
+        margin: 10rem 0 0 0;
+        padding: 1rem 1rem 7.5rem 1rem;
+    }
+    #input_connexion{
+        margin: 0;
+        border: 0 solid rgba(230,173,26,255);
+    }
+    #input_connexion input {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

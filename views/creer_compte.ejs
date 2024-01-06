@@ -1,0 +1,56 @@
+<%- include('includes/head', {Title: 'creer-compte', fichier: 'creer-compte'})%>
+<link rel="stylesheet" href="css/connexion.css" type="text/css">
+</head>
+<body>
+  <%- include('includes/header') %>
+  <main id="signup">
+    <img src="img/ultra-detailed-nebula-abstract-wallpaper-4.jpg" alt="fond" id="background-video">
+    <div id="first_div">
+      <h1>
+        Créer un compte
+      </h1>
+      <% if (inputData.hasError) {%>
+        <p id="input-error">
+          <%= inputData.message %>
+        </p>
+      <% } %>
+      <section id="input_connexion">
+        <form action="/creer-compte" method="POST">
+          <div class="form__group field">
+            <input type="text" class="form__field" placeholder="nom" name="nom" id='nom' value="<%= inputData.nom %>" required/>
+            <label for="nom" class="form__label">Nom</label>
+          </div>
+          <div class="form__group field">
+            <input type="text" class="form__field" placeholder="prenom" name="prenom" id='prenom' value="<%= inputData.prenom %>" required/>
+            <label for="prenom" class="form__label">Prénom</label>
+          </div>
+          <div class="form__group field">
+            <input type="text" class="form__field" placeholder="nom_dutilisateur" name="nom_dutilisateur" id='nom_dutilisateur' value="<%= inputData.nom_dutilisateur %>" required/>
+            <label for="nom_dutilisateur" class="form__label">Nom d'utilisateur</label>
+          </div>
+          <div class="form__group field">
+            <input type="email" class="form__field" placeholder="email" name="email" id='email' value="<%= inputData.email %>" required/>
+            <label for="email" class="form__label">Email</label>
+          </div>
+          <div class="form__group field">
+            <input type="email" class="form__field" placeholder="confirm-email" name="confirm-email" id='confirm-email' value="<%= inputData.confirmEmail %>" required/>
+            <label for="confirm-email" class="form__label">Confirmation de l'email</label>
+          </div>
+          <div class="form__group field">
+            <input type="password" class="form__field" placeholder="password" name="password" id='password' value="<%= inputData.password %>" required/>
+            <label for="password" class="form__label">Mot de passe</label>
+          </div>
+          <div class="form__group field">
+            <input type="password" class="form__field" placeholder="confirm-Password" name="confirm-Password" id='confirm-Password' value="<%= inputData.confirmPassword %>" required/>
+            <label for="confirm-Password" class="form__label" id='confirm-Password'>Confirmation du mot de passe</label>
+          </div>
+          <button class="custom-cursor">
+            Créer l'utilisateur
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <%- include('includes/footer') %>
+</body>
+</html>

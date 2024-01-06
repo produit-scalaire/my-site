@@ -1,0 +1,20 @@
+body {
+    position: absolute;
+}
+
+#first_div {
+    margin: 10rem 3rem 12rem 3rem;
+    padding: 2rem 2rem 15rem 2rem;
+    background-color: white;
+    opacity: 80%;
+    border: 0.2rem solid rgba(230,173,26,255);
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#first_div h1 {
+    text-align: center;
+
+}

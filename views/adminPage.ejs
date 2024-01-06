@@ -1,0 +1,171 @@
+<%- include('includes/head', {Title : 'Admin page'}) %>
+<link rel="stylesheet" type="text/css" href="css/adminPage.css">
+</head>
+<body>
+    <%- include('includes/header') %>
+    <main>
+        <img src="img/15198.jpg" alt="fond" id="background-video">
+        <div id="first_div">
+            <h1>
+                This is the admin page
+            </h1>
+            <ul>
+                <li>
+                    <h2>
+                        Faire de quelqu'un un admin
+                    </h2>
+                    <form action="/mettreAdmin" method="POST">
+                        <label for="utilisateurs">Nom d'utilisateur : </label>
+                        <select name="utilisateurs" id="utilisateurs">
+                            <% users.forEach(user => { %>
+                                <option value="<%= user.nom_dutilisateur %>"><%= user.nom_dutilisateur %></option>
+                            <% }); %>
+                        </select>
+                        <button>
+                            submit
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <h2>
+                        enlever un admin
+                    </h2>
+                    <form action="/supprAdmin" method="post">
+                        <label for="utilisateurs">Nom d'utilisateur : </label>
+                        <select name="utilisateurs" id="utilisateurs">
+                            <% users.forEach(user => { %>
+                                <option value="<%= user.nom_dutilisateur %>"><%= user.nom_dutilisateur %></option>
+                            <% }); %>
+                        </select>
+                        <button>
+                            Submit
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <h2>
+                    Commandes
+                </h2>
+                <% if (commandeData.length === 0) {%>
+                    <h3>
+                        Pas encore de commande
+                    </h3>
+                <% } %>
+                <% commandeData.forEach(commande => { %>
+                    <% if (!commande.isFinish) { %>
+                        <h3>
+                            <%= commande.nom %> <%= commande.prenom %>
+                        </h3>
+                        <p>
+                            <%= commande.commentaire %>
+                            <%= commande.garniture %>
+                        </p>
+                            <form action="/isFinish/<%= commande.id %>" method="POST">
+                                <button name="isFinish">
+                                    La commande est finie
+                                </button>
+                            </form>
+                    <% } %>
+                <% }) %>
+                </li>
+                <li>
+                    <h2>
+                        Créer un poste pour la hotLine
+                    </h2>
+                    <form action="/creerPost" method="post">
+                        <div>
+                            <label for="title">Titre du poste: </label>
+                            <input type="text" name="titre" id="titre">
+                        </div>
+                        <div id="divPostComment">
+                            <label for="commentairePost">Commentaire du poste : </label>
+                            <input type="text" id="commentairePost" name="commentairePost">
+                        </div>
+                        <div>
+                            <label for="recompense">Récompense texte : </label>
+                            <input type="text" id="recompense" name="recompense">
+                            <label for="nbrRecompense" > Récompense : </label>
+                            <input  type="number" id="nbrRecompense" name="nbrRecompense">
+                        </div>
+                        <button>Submit</button>
+                    </form>
+                </li>
+                <li>
+                    <h2>Les postes</h2>
+                        <% postData.forEach(post => { %>
+                            <% if (post.isFinish) {%>
+                                <div id="postFinish">
+                                    <h2><%= post.titre %></h2>
+                                    <p>
+                                        <%= post.commentairePost %>
+                                    </p>
+                                    <p>
+                                        Récompense : <%= post.recompense %>
+                                    </p>
+                                    <p>
+                                        statue : Accepté
+                                    </p>
+                                    <p>
+                                        gagnant : <%= post.winner %>
+                                    </p>
+                                    <form action="/supprimerPost/<%= post.id %>" method="post">
+                                        <button>
+                                           Supprimer le poste
+                                        </button>
+                                    </form>
+                                </div>
+                            <% } else {%>
+                                <div id="postNotFinish">
+                                    <h2><%= post.titre %></h2>
+                                    <p>
+                                        Déscription : <%= post.commentaire %>
+                                    </p>
+                                    <p>
+                                        Récompense : <%= post.recompense %>
+                                    </p>
+                                    <p>
+                                        statue : en attente
+                                    </p>
+                                    <form action="/accepterPost/<%= post.id %>" method="post">
+                                        <div>
+                                            <label for="utilisateur">Le gagnant est : </label>
+                                            <select name="utilisateur" id="utilisateur">
+                                                <% users.forEach(user => { %>
+                                                    <option value="<%= user.nom_dutilisateur %>"><%= user.nom_dutilisateur %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                        <button id="but<%= post.id %>" >
+                                            Accepter
+                                        </button>
+                                    </form>
+                                    <form action="/supprimerPost/<%= post.id %>" method="post">
+                                        <button>
+                                           Supprimer le poste
+                                        </button>
+                                    </form>
+                                </div>
+                            <% } %>
+                            <% resData.forEach(res => {%>
+                                <% if (res.postId === post.id.toString()) { %>
+                                    <% console.log(res.postId)
+                                        console.log(post.id)
+                                    %>
+                                    <div>
+                                        <h3>
+                                            <%= res.nom %> <%= res.prenom %>
+                                        </h3>
+                                        <p>
+                                            <%= res.description %>
+                                        </p>
+                                        <img src="/<%= res.imagePath %>" alt="image de la resolution" class="imagePhoto">
+                                    </div>
+                                <% } %>
+                            <% }) %>
+                        <% }); %>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <%- include('includes/footer') %>
+</body>

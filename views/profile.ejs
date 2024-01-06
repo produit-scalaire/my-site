@@ -1,0 +1,48 @@
+<%- include('includes/head', {Title : 'My profile'}) %>
+<link rel="stylesheet" type="text/css" href="css/profile.css">
+</head>
+<body>
+<%- include('includes/header') %>
+    <main>
+        <img src="img/15198.jpg" alt="fond" id="background-video">
+        <div id="first_div">
+
+            <h1>
+                This is your profile
+            </h1>
+            <ul>
+                <li>
+                    <p>
+                        Nom : <%= locals.user.nom %>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Prénom : <%= locals.user.prenom %>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Nom d'utilisateur : <%= locals.user.nom_dutilisateur %>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Adresse email : <%= locals.user.email %>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Nombre de point : <%= locals.user.point %>
+                    </p>
+                </li>
+                <form action="/supprimer-compte" method="post">
+                    <button>
+                    Supprimer mon compte
+                    </button>
+                </form>
+            </ul>
+        </div>
+    </main>
+    <%- include('includes/footer')%>
+</body>
