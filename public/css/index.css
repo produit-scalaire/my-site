@@ -1,11 +1,19 @@
-#cv1 {
-    height: 15rem;
-    width: 10rem;
+#divImages {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center; /* Horizontally center the images */
+    align-items: center; /* Vertically center the images */
+    height: 100vh; /* Set the height to 100% of the viewport height */
 }
-#cv2 {
-    height: 15rem;
-    width: 10rem;
+
+#cv1, #cv2 {
+    margin: 1rem;
+    flex: 1; /* Distribute available space equally between #cv1 and #cv2 */
+    max-width: 40%; /* Set a maximum width for each image */
+    height: auto; /* Maintain the aspect ratio */
 }
+
 body {
+    margin: 0; /* Remove default margin to ensure full-width display */
     background: #d7d2cb;
 }
