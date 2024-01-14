@@ -21,7 +21,7 @@ body {
 @media only screen and (max-width: 767px) {
     #divImages {
         flex-direction: column; /* Pour afficher les images verticalement sur des écrans plus petits */
-        margin-top: 10rem;
+        margin-top: 15rem;
     }
 
     #cv1, #cv2 {
