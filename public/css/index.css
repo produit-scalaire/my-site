@@ -1,4 +1,4 @@
-#divImages {
+#divImages, #divImages2 {
     margin-top: 5rem;
     display: flex;
     justify-content: center; /* Horizontally center the images */
@@ -6,7 +6,11 @@
     height: 100vh; /* Set the height to 100% of the viewport height */
 }
 
-#cv1, #cv2 {
+#div {
+    display: flex;
+}
+
+#cv1, #cv2, #cv3, #cv4 {
     margin: 1rem;
     flex: 1; /* Distribute available space equally between #cv1 and #cv2 */
     max-width: 40%; /* Set a maximum width for each image */
