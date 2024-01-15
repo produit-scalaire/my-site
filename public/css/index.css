@@ -8,6 +8,7 @@
 
 #div {
     display: flex;
+    flex-direction: column;
 }
 
 #cv1, #cv2, #cv3, #cv4 {
