@@ -29,7 +29,7 @@ body {
         margin-top: 15rem;
     }
 
-    #cv1, #cv2 {
+    #cv1, #cv2, #cv3, #cv4 {
         max-width: 100%; /* Pour que les images occupent la largeur complète sur des écrans plus petits */
     }
 }
